@@ -1,0 +1,9 @@
+{
+	"servers": {		
+		"my-mcp-server-47593b5a": {
+			"url": "https://tasks-mcp-server-py.mangomushroom-de412cce.australiaeast.azurecontainerapps.io/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}
