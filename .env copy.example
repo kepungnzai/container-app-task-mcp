@@ -1,0 +1,29 @@
+# MCP Server Configuration
+# Copy this file to .env and adjust as needed.
+
+# --- CIMD Authentication Settings ---
+
+# Set to "true" to disable authentication (for local development).
+# When disabled, all endpoints are accessible without tokens.
+# MCP_AUTH_DISABLED=true
+
+# The OAuth issuer URL. In production, set this to your server's public URL.
+# MCP_AUTH_ISSUER_URL=http://localhost:8000
+
+# Optional: URL for service documentation.
+# MCP_AUTH_SERVICE_DOC_URL=
+
+# Path to the client registration JSON file.
+# MCP_CLIENT_REGISTRATION_FILE=oauth.json
+
+# Enable dynamic client registration (default: false).
+# MCP_AUTH_ENABLE_DYNAMIC_REGISTRATION=false
+
+# Comma-separated list of required OAuth scopes.
+# MCP_AUTH_REQUIRED_SCOPES=mcp://tasks
+
+# --- Server Settings ---
+
+# Host and port for the FastAPI server.
+# HOST=127.0.0.1
+# PORT=8000

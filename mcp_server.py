@@ -1,10 +1,37 @@
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 from task_store import store
+from auth_provider import create_auth_provider
 
-mcp = FastMCP("TasksMCP", stateless_http=True,
-              transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False)
-              )
+
+def create_mcp_server() -> FastMCP:
+    """Create and configure the MCP server with optional CIMD authentication.
+
+    Authentication is controlled by environment variables:
+        MCP_AUTH_DISABLED=true disables authentication (for local development).
+    """
+    # Create auth provider (returns None if disabled)
+    auth_provider = create_auth_provider()
+
+    # Configure auth settings if provider is enabled
+    auth_settings = None
+    if auth_provider is not None:
+        auth_settings = auth_provider.get_auth_settings(
+            resource_server_url="http://localhost:8000"
+        )
+
+    mcp = FastMCP(
+        "TasksMCP",
+        stateless_http=True,
+        transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
+        auth=auth_settings,
+        auth_server_provider=auth_provider,
+    )
+    return mcp
+
+
+# Create the MCP server instance
+mcp = create_mcp_server()
 
 
 @mcp.tool()

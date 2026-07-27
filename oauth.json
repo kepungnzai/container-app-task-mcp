@@ -1,0 +1,13 @@
+{
+  "client_id": "https://my-app.com/.well-known/oauth.json",
+  "client_name": "Pizza Ordering App",
+  "client_uri": "https://my-app.com",
+  "logo_uri": "https://my-app.com/logo.png",
+  "redirect_uris": [
+    "https://my-app.com/callback"
+  ],
+  "grant_types": ["authorization_code"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "jwks_uri": "https://my-app.com/.well-known/jwks.json"
+}
